@@ -94,7 +94,7 @@ Next Task → Project
   * Heapify Down
 * Time complexity tradeoffs in real systems
 * Combining multiple data structures (Heap + Queue)
-
+* I learned the importance of saving the root value in a temporary variable before overwriting it, ensuring the maximum value is successfully returned to the caller after the heap is restructured.
 ---
 
 ## 🔥 Future Improvements
