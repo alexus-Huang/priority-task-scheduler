@@ -2,11 +2,14 @@ from max_heap import MaxHeap
 from task import Task
 
 heap = MaxHeap()
+order_counter = 0
 
 def add_task():
+    global order_counter
     name = input("Enter task name: ")
     priority = int(input("Enter task priority (1-10): "))
-    task = Task(name, priority)
+    task = Task(name, priority,order_counter)
+    order_counter += 1
     heap.insert(task)
 
 def get_next_task():

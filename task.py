@@ -1,7 +1,8 @@
 class Task:
-    def __init__(self, name, priority):
+    def __init__(self, name, priority,order):
         self.name = name
         self.priority = priority
+        self.order = order
 
     def __repr__(self):
         return f"{self.name} (Priority {self.priority})"
