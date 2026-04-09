@@ -13,15 +13,44 @@ def add_task():
     heap.insert(task)
 
 def get_next_task():
-    task = heap.extract_max()
+    task = heap.peek()
     if task:
         print(f"Next task: {task}")
     else:
         print("No tasks available.")
 
+def get_all_tasks(self):
+    return self.heap
+
+def view_all_tasks():
+    if heap.is_empty():
+        print("No tasks available.")
+    else:
+        print("All tasks:")
+        for tasks in heap.get_all_taks():
+            print(tasks)
+def complete_task():
+    task = heap.extract_max()
+    if task:
+        print(f"Completed task: {task}")
+    else:
+        print("No tasks to complete.")
+
+def remove_task():
+    name = input("Enter task name to remove: ")
+    for i in range(len(heap.heap)):
+        if heap.heap[i].name == name:
+            heap.heap[i] = heap.heap[-1]
+            heap.heap.pop()
+            heap._heapify_down(i)
+            print(f"Removed task: {name}")
+            return
+    
+
 heap.insert(Task("Task 1", 5))
 heap.insert(Task("Task 2", 8))
 heap.insert(Task("Task 3", 3))
 add_task()
+complete_task()
 get_next_task()
 get_next_task()
