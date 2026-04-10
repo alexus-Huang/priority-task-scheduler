@@ -56,6 +56,19 @@ class MaxHeap:
                 index = largest
             else:
                 break
+        
+    def peek(self):
+        if len(self.heap) == 0:
+            return None
+        return self.heap[0]
+    
+    def is_empty(self):
+        if len(self.heap) == 0:
+            return True
+        return False
+    
+    def get_all_tasks(self):
+        return self.heap
 
     def __str__(self):
         return str(self.heap)

@@ -19,15 +19,14 @@ def get_next_task():
     else:
         print("No tasks available.")
 
-def get_all_tasks(self):
-    return self.heap
+
 
 def view_all_tasks():
     if heap.is_empty():
         print("No tasks available.")
     else:
         print("All tasks:")
-        for tasks in heap.get_all_taks():
+        for tasks in heap.get_all_tasks():
             print(tasks)
 def complete_task():
     task = heap.extract_max()
@@ -46,11 +45,19 @@ def remove_task():
             print(f"Removed task: {name}")
             return
     
+def reminder_queue():
+    if heap.is_empty():
+        print("No tasks to do!")
+    else:
+        for tasks in heap.get_all_tasks():
+            print(tasks)
 
-heap.insert(Task("Task 1", 5))
-heap.insert(Task("Task 2", 8))
-heap.insert(Task("Task 3", 3))
+heap.insert(Task("Task 1", 5,1))
+heap.insert(Task("Task 2", 8,2))
+heap.insert(Task("Task 3", 3,3))
 add_task()
 complete_task()
 get_next_task()
 get_next_task()
+print("Reminder queue")
+reminder_queue()
