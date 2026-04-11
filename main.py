@@ -8,7 +8,7 @@ def add_task():
     global order_counter
     name = input("Enter task name: ")
     priority = int(input("Enter task priority (1-10): "))
-    task = Task(name, priority,order_counter)
+    task = Task(name, priority, order_counter)
     order_counter += 1
     heap.insert(task)
 
@@ -26,8 +26,8 @@ def view_all_tasks():
         print("No tasks available.")
     else:
         print("All tasks:")
-        for tasks in heap.get_all_tasks():
-            print(tasks)
+        for task in heap.get_all_tasks():
+            print(task)
 def complete_task():
     task = heap.extract_max()
     if task:
@@ -37,7 +37,7 @@ def complete_task():
 
 def remove_task():
     name = input("Enter task name to remove: ")
-    for i in range(len(heap.heap)):
+    for i in range(len(heap)):
         if heap.heap[i].name == name:
             heap.heap[i] = heap.heap[-1]
             heap.heap.pop()
