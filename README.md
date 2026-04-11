@@ -1,130 +1,36 @@
-# Priority Task Scheduler (Custom Heap Implementation)
+# Priority Task Manager
 
-## 📌 Overview
+A robust Python-based task management system that utilizes a custom **Max-Heap** to ensure tasks are processed according to their importance. 
 
-This project is a command-line **Task Scheduler** built using core Data Structures and Algorithms concepts. It prioritizes tasks based on urgency using a **custom Max-Heap implementation**, ensuring efficient task management.
+## 📌 Project Overview
+This project manages tasks based on a dual-priority system:
+1.  **Priority Level:** Tasks with higher priority values (e.g., 10) are handled first.
+2.  **Order of Insertion:** If two tasks have the same priority, the one added first is given precedence (FIFO).
 
-Unlike basic to-do lists, this system always retrieves the **highest-priority task first**, mimicking how operating systems schedule processes.
+## 📂 File Structure
+* `task.py`: Defines the `Task` object and custom comparison logic for the heap.
+* `max_heap.py`: A manual implementation of a Max-Heap data structure (without using built-in libraries like `heapq`).
+* `main.py`: The user interface and demonstration script to manage the task queue.
 
----
+## 🚀 Key Features
+* **Dynamic Heapification:** Automatically reorganizes the queue when tasks are added or completed.
+* **Peek Functionality:** View the current highest-priority task without removing it.
+* **Specific Removal:** Allows removing a task by name while maintaining the heap's structural integrity.
+* **Tie-Breaking Logic:** Uses an `order_counter` to ensure fairness among tasks with equal priority.
 
-## 🚀 Features
-
-* Add tasks with priority levels (1–10)
-* Retrieve the highest-priority task instantly
-* Remove (complete) tasks from the system
-* Handle multiple tasks efficiently using a heap
-* (Optional) FIFO handling for equal priorities using a queue
-
----
-
-## 🧠 Data Structures Used
-
-### 1. Max Heap
-
-* Stores tasks based on priority
-* Ensures highest-priority task is always at the root
-
-**Time Complexity:**
-
-* Insert: `O(log n)`
-* Extract Max: `O(log n)`
-* Peek: `O(1)`
-
----
-
-### 2. Queue (Extension Feature)
-
-* Used for handling tasks with equal priority
-* Maintains **first-in, first-out (FIFO)** order
-
----
-
-## 🏗️ Project Structure
-
-```
-priority-task-scheduler/
-│
-├── main.py              # Entry point / CLI interface
-├── max_heap.py          # Custom heap implementation
-├── task.py              # Task class definition
-└── README.md
-```
-
----
-
-## 💻 How It Works
-
-1. User adds a task with a priority
-2. Task is inserted into the Max Heap
-3. Heap organizes tasks automatically
-4. When retrieving a task:
-
-   * The highest-priority task is returned first
-   * If priorities are equal → queue determines order
-
----
-
-## ▶️ Example Usage
-
-```
-1. Add Task
-2. View Next Task
-3. Complete Task
-4. Exit
-```
-
-Example:
-
-```
-Add Task: Homework (Priority 5)
-Add Task: Project (Priority 8)
-
-Next Task → Project
-```
-
----
+## ⚙️ How It Works
+The core logic resides in `max_heap.py`, which uses a binary tree represented as an array:
+* **`_heapify_up`**: Moves a new task up the tree until it reaches its correct priority level.
+* **`_heapify_down`**: Re-balances the tree after the top task is completed or a specific task is removed.
 
 ## 🧪 What I Learned
+* **Internal Heap Mechanics:** Understood how to represent a tree structure using an array/list.
+* **Manual Implementation:** Gained hands-on experience writing `Heapify Up` and `Heapify Down` logic from scratch.
+* **Root Preservation:** Learned the importance of saving the root value in a temporary variable before overwriting it during extraction, ensuring the maximum value is successfully returned after the heap is restructured.
+* **System Trade-offs:** Explored time complexity tradeoffs in real-world systems and the benefits of combining data structures (Heap + Queue logic).
 
-* How heaps work internally (array-based tree structure)
-* Implementing heap operations from scratch:
+## 🛠 Usage
+To run the project, ensure you have Python installed and run the main script:
 
-  * Heapify Up
-  * Heapify Down
-* Time complexity tradeoffs in real systems
-* Combining multiple data structures (Heap + Queue)
-* I learned the importance of saving the root value in a temporary variable before overwriting it, ensuring the maximum value is successfully returned to the caller after the heap is restructured.
----
-
-## 🔥 Future Improvements
-
-* Add due dates and scheduling
-* Build a GUI (Tkinter or web app)
-* Store tasks persistently (file/database)
-* Add sorting by deadline + priority
-
----
-
-## 📚 Why This Project Matters
-
-This project demonstrates practical understanding of:
-
-* Data Structures & Algorithms
-* Problem decomposition
-* Writing clean, structured code
-
-It goes beyond using built-in libraries by implementing core logic from scratch.
-
----
-
-## 🛠️ Tech Stack
-
-* Python
-* Core DSA (Heap, Queue)
-
----
-
-## 👤 Author
-
-Built as a DSA practice project to strengthen understanding of heaps and priority queues.
+```bash
+python main.py
